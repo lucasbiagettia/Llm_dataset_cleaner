@@ -36,7 +36,7 @@ class PromptFactory:
 
 
     
-    def _load_prompt_template2(self, prompt_string):
+    def _load_prompt_template(self, prompt_string):
 
 
         PROMPT = PromptTemplate(
