@@ -4,12 +4,12 @@ from langchain.chains import LLMChain
 
 class Chatbot:
 
-    def __init__(self, api_key, prompt_provider):
-        self.initialize(api_key, prompt_provider)
+    def __init__(self, api_key, prompt):
+        self.initialize(api_key, prompt)
 
-    def initialize(self, api_key, prompt_provider ,llm_model="mixtral-8x7b-32768"):
+    def initialize(self, api_key, prompt ,llm_model="mixtral-8x7b-32768"):
         self.model = self.load_model(api_key = api_key, llm_model = llm_model)
-        self.prompt = prompt_provider.get_prompt()
+        self.prompt = prompt
         self.is_initialized = True
 
     def load_model(self, api_key, llm_model):
@@ -18,6 +18,6 @@ class Chatbot:
 
     def make_request(self, context):
         self.qa_chain: LLMChain = LLMChain(llm=self.model, prompt=self.prompt) 
-        prediction_msg: dict = self.qa_chain.invoke({'context': context})
+        prediction_msg: dict = self.qa_chain.invoke({'contexto': context})
         return prediction_msg['text']   
     
